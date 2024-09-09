@@ -17,7 +17,9 @@ Create and activate a conda environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate grodecoder-env
+```
+```bash
+conda activate environment
 ```
 
 ## Usage as command line tool
