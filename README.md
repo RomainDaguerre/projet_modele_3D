@@ -7,7 +7,7 @@ Définition du projet
 Clone the project:
 
 ```bash
-git clone https://github.com/omainDaguerre/projet_court
+git clone https://github.com/RomainDaguerre/projet_court
 cd projet_court
 ```
 
