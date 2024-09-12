@@ -14,6 +14,9 @@ Clone the project:
 
 ```bash
 git clone https://github.com/RomainDaguerre/projet_court
+```
+
+```bash
 cd projet_court
 ```
 
