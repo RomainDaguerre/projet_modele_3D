@@ -7,7 +7,7 @@ Définition du projet
 Clone the project:
 
 ```bash
-git clone https://github.com/omainDaguerre/projet_court
+git clone https://github.com/RomainDaguerre/projet_court
 cd projet_court
 ```
 
@@ -17,7 +17,9 @@ Create and activate a conda environment:
 
 ```bash
 conda env create -f environment.yml
-conda activate grodecoder-env
+```
+```bash
+conda activate environment
 ```
 
 ## Usage as command line tool
