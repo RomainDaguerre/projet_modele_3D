@@ -65,4 +65,10 @@ python EQ3D.py /test/1bta.pdb
 python EQ3D.py your_pdb_file.pdb
 ```
 
+### Run EQ3D_group:
+For run a group of pdb file.
+```bash
+python EQ3D_group.py your_file_where_pdb/
+```
+
 
