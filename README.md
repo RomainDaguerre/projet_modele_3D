@@ -22,6 +22,7 @@ OR
 git clone https://github.com/RomainDaguerre/projet_court
 ```
 
+### Move to the new directory:
 ```bash
 cd projet_court
 ```
@@ -38,6 +39,18 @@ conda env create -f environment.yml
 
 ```bash
 conda activate environment
+```
+
+### You can also update the conda environment with:
+
+```bash
+mamba env update -f binder/environment.yml
+```
+
+### To deactivate an conda active environment, use
+
+```
+conda deactivate
 ```
 
 ## Usage as command line tool
