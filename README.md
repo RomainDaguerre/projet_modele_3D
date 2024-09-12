@@ -1,4 +1,4 @@
-# Evaluation Quality 3D(EQ3D)
+# Evaluation Quality 3D (EQ3D)
 
 PROGRAMME D’EVALUATION DE LA QUALITE D’UN MODELE 3D DE
 PROTEINE
