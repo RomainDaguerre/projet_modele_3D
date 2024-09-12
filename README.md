@@ -48,11 +48,3 @@ conda activate environment
 
 
 
-
-
-### Clone the repository
-
-```bash
-git clone https://github.com/pierrepo/biopyassistant.git
-cd biopyassistant
-```
