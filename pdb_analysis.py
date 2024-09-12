@@ -1,5 +1,6 @@
 import os
 import math
+import numpy as np
 
 class Atom:
     """This is the class Atom."""
@@ -31,8 +32,9 @@ class Atom:
                     (self.z - atom.z)**2
         return math.sqrt(distance2)
 
+
 class Molecule:
-    """This is the classe Molecule"""
+    """This is the class Molecule"""
 
     def __init__(self, name=None):
         """Initialisation molecule object.
@@ -44,21 +46,6 @@ class Molecule:
         self.list_atoms = []
         self.list_distance = []
 
-    def __str__(self):
-        """Display molecule object information."""
-        message = f"Molecule {self.name}\n"
-        if  self.list_atoms:
-            for atom in self.list_atoms:
-                message += atom.__str__()
-        else:
-            message += "No atom for the moment\n"
-        if self.list_distance:
-            for at1, at2, dist in self.list_distance:
-                message += f"{at1} connected to {at2} : distance : {dist:.3f}\n"
-        else:
-            message += "No connectivity for the moment\n"
-        return message
-        
     def build_mlc_from_pdb(self, pdbfilename):
         """Recover information from a pdb file.
 
@@ -67,7 +54,6 @@ class Molecule:
         with open(pdbfilename, "r") as pdbfile:
             for line in pdbfile:
                 if line.startswith("ATOM") or line.startswith("HETATM"):
-                    atome_num = int(line[6:11])
                     atome_name = line[12:16].strip()
                     residue_name = line[17:20].strip()
                     x = float(line[30:38])
@@ -82,14 +68,14 @@ class Molecule:
         Return the list with every pair of atoms with the name, the residue name for 
         both atoms and the distance between the two atoms.
         """
-        if not self.list_atoms:
-            return None
-        nb_atoms = len(self.list_atoms)
-        for i in range(nb_atoms-1):
-            for j in range(i+1, nb_atoms):
-                distance = self.list_atoms[i].calc_dist(self.list_atoms[j])
-                if (distance <= 15.5): # We don't need pair of atoms with distance over 15.5 angstrom (from 1027461 to 532414)
-                    bond = (self.list_atoms[i].name, self.list_atoms[i].residue_name, 
-                    self.list_atoms[j].name, self.list_atoms[j].residue_name , distance)
-                    self.list_distance.append(bond)
-        return self.list_distance
+        coords = np.array([[atom.x, atom.y, atom.z] for atom in self.list_atoms])
+        diffs = coords[:, np.newaxis, :] - coords[np.newaxis, :, :]
+        dists = np.sqrt(np.sum(diffs ** 2, axis=-1))
+        atom_pairs = []
+        for i in range(len(self.list_atoms)):
+            for j in range(i+1, len(self.list_atoms)):
+                # We don't need pair of atoms with distance over 15.5 angstrom 
+                if dists[i, j] <= 15.5: 
+                    atom_pairs.append((self.list_atoms[i].name, self.list_atoms[i].residue_name,
+                                       self.list_atoms[j].name, self.list_atoms[j].residue_name, dists[i, j]))
+        return atom_pairs
