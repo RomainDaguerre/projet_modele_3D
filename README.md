@@ -55,9 +55,14 @@ conda deactivate
 
 ## Usage as command line tool
 
+### Run EQ3D on a test file:
+```bash
+python EQ3D.py /test/1bta.pdb
+```
 
-
-## Run the web app
-
+### Run EQ3D:
+```bash
+python EQ3D.py your_pdb_file.pdb
+```
 
 
