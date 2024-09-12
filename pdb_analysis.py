@@ -49,11 +49,11 @@ class Molecule:
     def build_mlc_from_pdb(self, pdbfilename):
         """Recover information from a pdb file.
 
-        The number, the name, the residue name and the coordinates for each atoms.
+        Only keep alpha carbon (CA) atoms.
         """
         with open(pdbfilename, "r") as pdbfile:
             for line in pdbfile:
-                if line.startswith("ATOM") or line.startswith("HETATM"):
+                if (line.startswith("ATOM") or line.startswith("HETATM")) and line[12:16].strip() == 'CA':
                     atome_name = line[12:16].strip()
                     residue_name = line[17:20].strip()
                     x = float(line[30:38])
