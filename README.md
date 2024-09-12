@@ -10,8 +10,12 @@ Programme qui évalue la qualité d'un modèle 3D de protéine à partir des pot
 
 ## Installation
 
-Clone the project:
+###Clone the project:
 
+```bash
+git clone https://github.com/RomainDaguerre/projet_court
+```
+OR
 ```bash
 git clone https://github.com/RomainDaguerre/projet_court
 ```
