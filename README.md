@@ -20,13 +20,16 @@ git clone https://github.com/RomainDaguerre/projet_court
 cd projet_court
 ```
 
-Create and activate a conda environment:
-
 ### Install [Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html).
+
+### Create a Conda environment
 
 ```bash
 conda env create -f environment.yml
 ```
+
+### Activate the Conda environment
+
 ```bash
 conda activate environment
 ```
